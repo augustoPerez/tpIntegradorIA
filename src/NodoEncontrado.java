@@ -35,11 +35,11 @@ class NodoEncontrado {
     }
 
     String caminoPuzzle2() {
-        String string = "";
+        String string = "Camino de solución del tablero:\n";
         ArrayList<Nodo> lista = new ArrayList<>();
         lista.add(nodoMeta);
-        while (lista.get(lista.size() - 1).getNodoPadre() != null) {
-            lista.add(lista.get(lista.size() - 1).getNodoPadre());
+        while (lista.get(0).getNodoPadre() != null) {
+            lista.add(0, lista.get(0).getNodoPadre());
         }
         for (Nodo nodo : lista) {
             string += nodo.getPuzzle()[0] + " " + nodo.getPuzzle()[1] + " " + nodo.getPuzzle()[2] + "\t";
