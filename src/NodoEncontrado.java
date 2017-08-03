@@ -1,23 +1,58 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 class NodoEncontrado {
 
     private int cantNodosRecorridos;
     private Nodo nodoMeta;
 
-    public NodoEncontrado(int cantNodosRecorridos, Nodo nodoMeta) {
+    NodoEncontrado(int cantNodosRecorridos, Nodo nodoMeta) {
         this.cantNodosRecorridos = cantNodosRecorridos;
         this.nodoMeta = nodoMeta;
     }
 
-    public int getCantNodosRecorridos() {
+    int getCantNodosRecorridos() {
         return cantNodosRecorridos;
     }
 
-    public Nodo getNodoMeta() {
+    Nodo getNodoMeta() {
         return nodoMeta;
     }
 
     @Override
     public String toString() {
-        return "Nivel del nodo encontrado: " + nodoMeta.getNivel()+  "\tCantidad de nodos recorridos: " + cantNodosRecorridos ;
+        return "Nivel del nodo encontrado: " + nodoMeta.getNivel() + "\tCantidad de nodos recorridos: " + cantNodosRecorridos;
     }
+
+    String caminoPuzzle() {
+        String string = "";
+        Nodo nodo = this.nodoMeta;
+        while (nodo.getNodoPadre() != null) {
+            string += Arrays.toString(nodo.getPuzzle()) + "\n";
+            nodo = nodo.getNodoPadre();
+        }
+        return string;
+    }
+
+    String caminoPuzzle2() {
+        String string = "";
+        ArrayList<Nodo> lista = new ArrayList<>();
+        lista.add(nodoMeta);
+        while (lista.get(lista.size() - 1).getNodoPadre() != null) {
+            lista.add(lista.get(lista.size() - 1).getNodoPadre());
+        }
+        for (Nodo nodo : lista) {
+            string += nodo.getPuzzle()[0] + " " + nodo.getPuzzle()[1] + " " + nodo.getPuzzle()[2] + "\t";
+        }
+        string += "\n";
+        for (Nodo nodo : lista) {
+            string += nodo.getPuzzle()[3] + " " + nodo.getPuzzle()[4] + " " + nodo.getPuzzle()[5] + "\t";
+        }
+        string += "\n";
+        for (Nodo nodo : lista) {
+            string += nodo.getPuzzle()[6] + " " + nodo.getPuzzle()[7] + " " + nodo.getPuzzle()[8] + "\t";
+        }
+        return string;
+    }
+
 }

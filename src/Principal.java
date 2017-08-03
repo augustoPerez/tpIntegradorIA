@@ -25,6 +25,9 @@ public class Principal {
         System.out.println("-----Busqueda en A* - Fichas Desacomodadas: \n" + Busqueda.busquedaAFichas(arbol, asd).toString());
         System.out.println("-----Busqueda en A* - Manhattan: \n" + Busqueda.busquedaAManhattan(arbol, asd).toString());
 
+        System.out.println(Busqueda.busquedaAmplitud(arbol, asd).caminoPuzzle());
+
+        System.out.println(Busqueda.busquedaAmplitud(arbol, asd).caminoPuzzle2());
 
     }
 

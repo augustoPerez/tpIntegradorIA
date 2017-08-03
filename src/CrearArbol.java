@@ -34,14 +34,7 @@ class CrearArbol {
                 if (derecha != null && !estaHash(derecha, hash)) {
                     nodoRecorrido.setDerecha(new Nodo(MoverFicha.moverDerecha(nodoRecorrido.getPuzzle()), nodoRecorrido.getNivel() + 1, nodoRecorrido));
                     lista.add(nodoRecorrido.getDerecha());
-                    boolean esta = hash.containsKey(nodoRecorrido.getDerecha().hashCode());
-                    Nodo n = hash.get(nodoRecorrido.getDerecha().hashCode());
-                    int cant = hash.size();
-                    boolean esta2 = estaHash(derecha, hash);
                     hash.put(nodoRecorrido.getDerecha().hashCode(), nodoRecorrido.getDerecha());
-                    boolean esta1 = hash.containsKey(nodoRecorrido.getDerecha().hashCode());
-                    boolean esta3 = estaHash(derecha, hash);
-                    int cant1= hash.size();
                     arbol.sumarCantidad();
                 }
                 if (abajo != null && !estaHash(abajo, hash)) {
@@ -64,7 +57,6 @@ class CrearArbol {
         }
 
         return arbol;
-
     }
 
     static Arbol enProfundidad(int[] tableroInicial) {
@@ -120,12 +112,9 @@ class CrearArbol {
         }
 
         return arbol;
-
     }
 
     static Arbol maxNivel(int[] tableroInicial, int maxNivel, int cantRepeticiones) {
-
-        /*int nivel = 1;*/
 
         Nodo raiz = new Nodo(tableroInicial, 0, null); //nodo que contiene el tablero inicial
 
@@ -146,36 +135,28 @@ class CrearArbol {
                 int[] abajo = MoverFicha.moverAbajo(nodoRecorrido.getPuzzle());
                 int[] izquierda = MoverFicha.moverIzquierda(nodoRecorrido.getPuzzle());
 
-                if (arriba != null && agregarRepetido(arriba, hash, cantRepeticiones) &&
-                        (nodoRecorrido.getNodoPadre() == null ||
-                                (nodoRecorrido.getNodoPadre() != null && !Arrays.equals(arriba, nodoRecorrido.getNodoPadre().getPuzzle())))) {
+                if (arriba != null && agregarRepetido(arriba, hash, cantRepeticiones) && diferentePadre(arriba,nodoRecorrido)) {
                     nodoRecorrido.setArriba(new Nodo(MoverFicha.moverArriba(nodoRecorrido.getPuzzle()), nodoRecorrido.getNivel() + 1, nodoRecorrido));
                     lista.add(nodoRecorrido.getArriba());
                     arbol.sumarCantidad();
                     if (!estaHash(arriba, hash))
                         hash.put(nodoRecorrido.getArriba().hashCode(), nodoRecorrido.getArriba());
                 }
-                if (derecha != null && agregarRepetido(derecha, hash, cantRepeticiones) &&
-                        (nodoRecorrido.getNodoPadre() == null ||
-                                (nodoRecorrido.getNodoPadre() != null && !Arrays.equals(derecha, nodoRecorrido.getNodoPadre().getPuzzle())))) {
+                if (derecha != null && agregarRepetido(derecha, hash, cantRepeticiones) && diferentePadre(derecha,nodoRecorrido)) {
                     nodoRecorrido.setDerecha(new Nodo(MoverFicha.moverDerecha(nodoRecorrido.getPuzzle()), nodoRecorrido.getNivel() + 1, nodoRecorrido));
                     lista.add(nodoRecorrido.getDerecha());
                     arbol.sumarCantidad();
                     if (!estaHash(derecha, hash))
                         hash.put(nodoRecorrido.getDerecha().hashCode(), nodoRecorrido.getDerecha());
-
                 }
-                if (abajo != null && agregarRepetido(abajo, hash, cantRepeticiones) &&
-                        (nodoRecorrido.getNodoPadre() == null ||
-                                (nodoRecorrido.getNodoPadre() != null && !Arrays.equals(abajo, nodoRecorrido.getNodoPadre().getPuzzle())))) {
+                if (abajo != null && agregarRepetido(abajo, hash, cantRepeticiones) && diferentePadre(abajo,nodoRecorrido)) {
                     nodoRecorrido.setAbajo(new Nodo(MoverFicha.moverAbajo(nodoRecorrido.getPuzzle()), nodoRecorrido.getNivel() + 1, nodoRecorrido));
                     lista.add(nodoRecorrido.getAbajo());
                     arbol.sumarCantidad();
-                    if (!estaHash(abajo, hash)) hash.put(nodoRecorrido.getAbajo().hashCode(), nodoRecorrido.getAbajo());
+                    if (!estaHash(abajo, hash))
+                        hash.put(nodoRecorrido.getAbajo().hashCode(), nodoRecorrido.getAbajo());
                 }
-                if (izquierda != null && agregarRepetido(izquierda, hash, cantRepeticiones) &&
-                        (nodoRecorrido.getNodoPadre() == null ||
-                                (nodoRecorrido.getNodoPadre() != null && !Arrays.equals(izquierda, nodoRecorrido.getNodoPadre().getPuzzle())))) {
+                if (izquierda != null && agregarRepetido(izquierda, hash, cantRepeticiones) && diferentePadre(izquierda,nodoRecorrido)) {
                     nodoRecorrido.setIzquierda(new Nodo(MoverFicha.moverIzquierda(nodoRecorrido.getPuzzle()), nodoRecorrido.getNivel() + 1, nodoRecorrido));
                     lista.add(nodoRecorrido.getIzquierda());
                     arbol.sumarCantidad();
@@ -193,11 +174,7 @@ class CrearArbol {
     }
 
     private static boolean estaHash(int[] puzzle, HashMap<Integer, Nodo> hash) {
-        if (!hash.containsKey(Hash.hashCode(puzzle))) return false;
-        if (hash.containsKey(Hash.hashCode(puzzle)) && !Arrays.equals(hash.get(Hash.hashCode(puzzle)).getPuzzle(), puzzle)) {
-            return false;
-        }
-        return true;
+        return hash.containsKey(Hash.hashCode(puzzle));
     }
 
     private static boolean agregarRepetido(int[] puzzle, HashMap<Integer, Nodo> hash, int cantRepeticiones) {
@@ -205,15 +182,17 @@ class CrearArbol {
         if (hash.get(Hash.hashCode(puzzle)) == null)
             agregar = true;
         if (hash.get(Hash.hashCode(puzzle)) != null &&
-                !Arrays.equals(hash.get(Hash.hashCode(puzzle)).getPuzzle(), puzzle))
-            agregar = true;
-        if (hash.get(Hash.hashCode(puzzle)) != null &&
-                Arrays.equals(hash.get(Hash.hashCode(puzzle)).getPuzzle(), puzzle) &&
                 hash.get(Hash.hashCode(puzzle)).getCantRepeticiones() < cantRepeticiones) {
             hash.get(Hash.hashCode(puzzle)).agregarRepeticion();
             agregar = true;
         }
         return agregar;
+    }
+
+    private static boolean diferentePadre(int[] puzzleAgregar, Nodo nodoActual){
+        if (nodoActual.getNodoPadre() == null) return true;
+        if (nodoActual.getNodoPadre() != null && !Arrays.equals(puzzleAgregar, nodoActual.getNodoPadre().getPuzzle())) return true;
+        return false;
     }
 
 }
