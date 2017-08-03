@@ -30,9 +30,6 @@ class CrearArbol {
                     lista.add(nodoRecorrido.getArriba());
                     hash.put(nodoRecorrido.getArriba().hashCode(), nodoRecorrido.getArriba());
                     arbol.sumarCantidad();
-                    if (arbol.size() != hash.size()) {
-//                        System.out.println(arbol.size() + " " + hash.size());
-                    }
                 }
                 if (derecha != null && !estaHash(derecha, hash)) {
                     nodoRecorrido.setDerecha(new Nodo(MoverFicha.moverDerecha(nodoRecorrido.getPuzzle()), nodoRecorrido.getNivel() + 1, nodoRecorrido));
@@ -46,35 +43,18 @@ class CrearArbol {
                     boolean esta3 = estaHash(derecha, hash);
                     int cant1= hash.size();
                     arbol.sumarCantidad();
-                    if (arbol.size() != hash.size()) {
-                        int hash1 = Arrays.hashCode(derecha);
-                        int hash2 = nodoRecorrido.getDerecha().hashCode();
-                        Nodo nodo1 = nodoRecorrido.getDerecha();
-                        Nodo nodo2 = hash.get(nodoRecorrido.getDerecha().hashCode());
-//                        System.out.println(arbol.size() + " " + hash.size());
-                    }
                 }
                 if (abajo != null && !estaHash(abajo, hash)) {
                     nodoRecorrido.setAbajo(new Nodo(MoverFicha.moverAbajo(nodoRecorrido.getPuzzle()), nodoRecorrido.getNivel() + 1, nodoRecorrido));
                     lista.add(nodoRecorrido.getAbajo());
                     hash.put(nodoRecorrido.getAbajo().hashCode(), nodoRecorrido.getAbajo());
                     arbol.sumarCantidad();
-                    if (arbol.size() != hash.size()) {
-//                        System.out.println(arbol.size() + " " + hash.size());
-                    }
                 }
                 if (izquierda != null && !estaHash(izquierda, hash)) {
                     nodoRecorrido.setIzquierda(new Nodo(MoverFicha.moverIzquierda(nodoRecorrido.getPuzzle()), nodoRecorrido.getNivel() + 1, nodoRecorrido));
                     lista.add(nodoRecorrido.getIzquierda());
                     hash.put(nodoRecorrido.getIzquierda().hashCode(), nodoRecorrido.getIzquierda());
                     arbol.sumarCantidad();
-                    if (arbol.size() != hash.size()) {
-//                        System.out.println(arbol.size() + " " + hash.size());
-                    }
-                }
-
-                if (arbol.size() != hash.size()) {
-//                    System.out.println(arbol.size() + " " + hash.size());
                 }
 
                 if (nodoRecorrido.getNivel() > arbol.getMaxNivel())
@@ -138,7 +118,7 @@ class CrearArbol {
 
             }
         }
-        System.out.println("hash: " + hash.size());
+
         return arbol;
 
     }
@@ -206,21 +186,15 @@ class CrearArbol {
                 if (nodoRecorrido.getNivel() > arbol.getMaxNivel())
                     arbol.setMaxNivel(nodoRecorrido.getNivel());
 
-                /*if (nodoRecorrido.getNivel() == nivel) {
-                    nivel++;
-                    System.out.println("Nivel: " + nodoRecorrido.getNivel() + ", \tNodos: " + arbol.size() + ", \tDiferentes: " + hash.size());
-                }*/
             }
         }
-
-        System.out.println("hash: " + hash.size());
 
         return arbol;
     }
 
     private static boolean estaHash(int[] puzzle, HashMap<Integer, Nodo> hash) {
-        if (!hash.containsKey(Arrays.hashCode(puzzle))) return false;
-        if (hash.containsKey(Arrays.hashCode(puzzle)) && !Arrays.equals(hash.get(Arrays.hashCode(puzzle)).getPuzzle(), puzzle)) {
+        if (!hash.containsKey(Hash.hashCode(puzzle))) return false;
+        if (hash.containsKey(Hash.hashCode(puzzle)) && !Arrays.equals(hash.get(Hash.hashCode(puzzle)).getPuzzle(), puzzle)) {
             return false;
         }
         return true;
@@ -228,15 +202,15 @@ class CrearArbol {
 
     private static boolean agregarRepetido(int[] puzzle, HashMap<Integer, Nodo> hash, int cantRepeticiones) {
         boolean agregar = false;
-        if (hash.get(Arrays.hashCode(puzzle)) == null)
+        if (hash.get(Hash.hashCode(puzzle)) == null)
             agregar = true;
-        if (hash.get(Arrays.hashCode(puzzle)) != null &&
-                !Arrays.equals(hash.get(Arrays.hashCode(puzzle)).getPuzzle(), puzzle))
+        if (hash.get(Hash.hashCode(puzzle)) != null &&
+                !Arrays.equals(hash.get(Hash.hashCode(puzzle)).getPuzzle(), puzzle))
             agregar = true;
-        if (hash.get(Arrays.hashCode(puzzle)) != null &&
-                Arrays.equals(hash.get(Arrays.hashCode(puzzle)).getPuzzle(), puzzle) &&
-                hash.get(Arrays.hashCode(puzzle)).getCantRepeticiones() < cantRepeticiones) {
-            hash.get(Arrays.hashCode(puzzle)).agregarRepeticion();
+        if (hash.get(Hash.hashCode(puzzle)) != null &&
+                Arrays.equals(hash.get(Hash.hashCode(puzzle)).getPuzzle(), puzzle) &&
+                hash.get(Hash.hashCode(puzzle)).getCantRepeticiones() < cantRepeticiones) {
+            hash.get(Hash.hashCode(puzzle)).agregarRepeticion();
             agregar = true;
         }
         return agregar;
