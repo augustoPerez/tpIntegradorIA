@@ -77,16 +77,16 @@ public class Principal {
 
         System.out.println("\nTamaño del árbol: " + arbol.size());
         System.out.println("Máximo nivel del árbol: " + arbol.getMaxNivel());
-        System.out.println("\n-----Busqueda en amplitud: \n" + Busqueda.busquedaAmplitud(arbol, tableroFin).toString());
-        System.out.println("\n-----Busqueda en profundidad: \n" + Busqueda.busquedaProfundidad(arbol, tableroFin).toString());
-        System.out.println("\n-----Busqueda en primero el mejor - Fichas Desacomodadas: \n" + Busqueda.busquedaPMFichas(arbol, tableroFin).toString());
-        System.out.println("\n-----Busqueda en primero el mejor - Manhattan: \n" + Busqueda.busquedaPMManhattan(arbol, tableroFin).toString());
-        System.out.println("\n-----Busqueda en A* - Fichas Desacomodadas: \n" + Busqueda.busquedaAFichas(arbol, tableroFin).toString());
-        System.out.println("\n-----Busqueda en A* - Manhattan: \n" + Busqueda.busquedaAManhattan(arbol, tableroFin).toString());
+        System.out.println("\n-----Busqueda en amplitud: \n" + (Busqueda.busquedaAmplitud(arbol, tableroFin) != null ? Busqueda.busquedaAmplitud(arbol, tableroFin).toString() : "Tablero no encontrado"));
+        System.out.println("\n-----Busqueda en profundidad: \n" + (Busqueda.busquedaProfundidad(arbol, tableroFin) != null ? Busqueda.busquedaProfundidad(arbol, tableroFin).toString() : "Tablero no encontrado"));
+        System.out.println("\n-----Busqueda en primero el mejor - Fichas Desacomodadas: \n" + (Busqueda.busquedaPMFichas(arbol, tableroFin) != null ? Busqueda.busquedaPMFichas(arbol, tableroFin).toString() : "Tablero no encontrado"));
+        System.out.println("\n-----Busqueda en primero el mejor - Manhattan: \n" + (Busqueda.busquedaPMManhattan(arbol, tableroFin) != null ? Busqueda.busquedaPMManhattan(arbol, tableroFin).toString() : "Tablero no encontrado"));
+        System.out.println("\n-----Busqueda en A* - Fichas Desacomodadas: \n" + (Busqueda.busquedaAFichas(arbol, tableroFin) != null ? Busqueda.busquedaAFichas(arbol, tableroFin).toString() : "Tablero no encontrado"));
+        System.out.println("\n-----Busqueda en A* - Manhattan: \n" + (Busqueda.busquedaAManhattan(arbol, tableroFin) != null ? Busqueda.busquedaAManhattan(arbol, tableroFin).toString() : "Tablero no encontrado"));
 
 //        System.out.println(Busqueda.busquedaAmplitud(arbol, tableroFin).caminoPuzzle());
 
-        System.out.println("\n" + Busqueda.busquedaAmplitud(arbol, tableroFin).caminoPuzzle2());
+        System.out.println("\n" + (Busqueda.busquedaAmplitud(arbol, tableroFin) != null ? Busqueda.busquedaAmplitud(arbol, tableroFin).caminoPuzzle2() : "Tablero no encontrado"));
 
     }
 
