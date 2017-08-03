@@ -8,8 +8,8 @@ public class Principal {
 
         int[] tableroInicial = {1, 2, 3, 4, 0, 5, 6, 7, 8}; //tablero inicial
 
-        Arbol arbol = CrearArbol.maxNivel(tableroInicial, 30, 3);
-//        Arbol arbol = CrearArbol.enAmplitud(tableroInicial);
+//        Arbol arbol = CrearArbol.maxNivel(tableroInicial, 30, 3);
+        Arbol arbol = CrearArbol.enAmplitud(tableroInicial);
 //        Arbol arbol = CrearArbol.enProfundidad(tableroInicial);
 
 //        int[] asd = {1, 5, 7, 6, 0, 4, 8, 3, 2};  Una disposición de tablero no encontrada
@@ -18,12 +18,12 @@ public class Principal {
 
         System.out.println("Tamaño del árbol: " + arbol.size());
         System.out.println("Máximo nivel del árbol: " + arbol.getMaxNivel());
-        System.out.println("Busqueda en amplitud: " + Busqueda.busquedaAmplitud(arbol, asd));
-        System.out.println("Busqueda en profundidad: " + Busqueda.busquedaProfundidad(arbol, asd));
-        System.out.println("Busqueda en primero el mejor - Fichas Desacomodadas: " + Busqueda.busquedaPMFichas(arbol, asd));
-        System.out.println("Busqueda en primero el mejor - Manhattan: " + Busqueda.busquedaPMManhattan(arbol, asd));
-        System.out.println("Busqueda en A* - Fichas Desacomodadas: " + Busqueda.busquedaAFichas(arbol, asd));
-        System.out.println("Busqueda en A* - Manhattan: " + Busqueda.busquedaAManhattan(arbol, asd));
+        System.out.println("-----Busqueda en amplitud: \n" + Busqueda.busquedaAmplitud(arbol, asd).toString());
+        System.out.println("-----Busqueda en profundidad: \n" + Busqueda.busquedaProfundidad(arbol, asd).toString());
+        System.out.println("-----Busqueda en primero el mejor - Fichas Desacomodadas: \n" + Busqueda.busquedaPMFichas(arbol, asd).toString());
+        System.out.println("-----Busqueda en primero el mejor - Manhattan: \n" + Busqueda.busquedaPMManhattan(arbol, asd).toString());
+        System.out.println("-----Busqueda en A* - Fichas Desacomodadas: \n" + Busqueda.busquedaAFichas(arbol, asd).toString());
+        System.out.println("-----Busqueda en A* - Manhattan: \n" + Busqueda.busquedaAManhattan(arbol, asd).toString());
 
 
     }
