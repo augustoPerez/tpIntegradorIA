@@ -10,6 +10,7 @@ class Busqueda {
         int cantNodosRecorridos = 0;
         while (!lista.isEmpty()) {
             Nodo nodoRecorrido = lista.remove(0);
+            cantNodosRecorridos++;
             if (Arrays.equals(nodoRecorrido.getPuzzle(), meta)) {
                 nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido);
                 break;
@@ -19,7 +20,6 @@ class Busqueda {
                 if (nodoRecorrido.getAbajo() != null) lista.add(nodoRecorrido.getAbajo());
                 if (nodoRecorrido.getIzquierda() != null) lista.add(nodoRecorrido.getIzquierda());
             }
-            cantNodosRecorridos++;
         }
         return nodoEncontrado;
     }
