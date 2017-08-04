@@ -4,6 +4,13 @@ import java.util.HashMap;
 
 class CrearArbol {
 
+    private static ArrayList<Nodo> listaNivel5 = new ArrayList<>();
+    private static ArrayList<Nodo> listaNivel10 = new ArrayList<>();
+    private static ArrayList<Nodo> listaNivel15 = new ArrayList<>();
+    private static ArrayList<Nodo> listaNivel20 = new ArrayList<>();
+    private static ArrayList<Nodo> listaNivel25 = new ArrayList<>();
+    private static ArrayList<Nodo> listaNivel30 = new ArrayList<>();
+
     static Arbol enAmplitud(int[] tableroInicial) {
 
         Nodo raiz = new Nodo(tableroInicial, 0, null); //nodo que contiene el tablero inicial
@@ -17,6 +24,13 @@ class CrearArbol {
 
         while (!lista.isEmpty()) {
             Nodo nodoRecorrido = lista.remove(0);
+
+//            if(nodoRecorrido.getNivel()==5) listaNivel5.add(nodoRecorrido);
+//            else if(nodoRecorrido.getNivel()==10) listaNivel10.add(nodoRecorrido);
+//            else if(nodoRecorrido.getNivel()==15) listaNivel15.add(nodoRecorrido);
+//            else if(nodoRecorrido.getNivel()==20) listaNivel20.add(nodoRecorrido);
+//            else if(nodoRecorrido.getNivel()==25) listaNivel25.add(nodoRecorrido);
+//            else if(nodoRecorrido.getNivel()==30) listaNivel30.add(nodoRecorrido);
 
             if (nodoRecorrido.getPuzzle() != null) {
 
@@ -193,6 +207,31 @@ class CrearArbol {
         if (nodoActual.getNodoPadre() == null) return true;
         if (nodoActual.getNodoPadre() != null && !Arrays.equals(puzzleAgregar, nodoActual.getNodoPadre().getPuzzle())) return true;
         return false;
+    }
+
+
+    public static ArrayList<Nodo> getListaNivel5() {
+        return listaNivel5;
+    }
+
+    public static ArrayList<Nodo> getListaNivel10() {
+        return listaNivel10;
+    }
+
+    public static ArrayList<Nodo> getListaNivel15() {
+        return listaNivel15;
+    }
+
+    public static ArrayList<Nodo> getListaNivel20() {
+        return listaNivel20;
+    }
+
+    public static ArrayList<Nodo> getListaNivel25() {
+        return listaNivel25;
+    }
+
+    public static ArrayList<Nodo> getListaNivel30() {
+        return listaNivel30;
     }
 
 }

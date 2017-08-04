@@ -84,9 +84,42 @@ public class Principal {
         System.out.println("\n-----Busqueda en A* - Fichas Desacomodadas: \n" + (Busqueda.busquedaAFichas(arbol, tableroFin) != null ? Busqueda.busquedaAFichas(arbol, tableroFin).toString() : "Tablero no encontrado"));
         System.out.println("\n-----Busqueda en A* - Manhattan: \n" + (Busqueda.busquedaAManhattan(arbol, tableroFin) != null ? Busqueda.busquedaAManhattan(arbol, tableroFin).toString() : "Tablero no encontrado"));
 
-//        System.out.println(Busqueda.busquedaAmplitud(arbol, tableroFin).caminoPuzzle());
-
         System.out.println("\n" + (Busqueda.busquedaAmplitud(arbol, tableroFin) != null ? Busqueda.busquedaAmplitud(arbol, tableroFin).caminoPuzzle2() : "Tablero no encontrado"));
+
+//        ArrayList<Nodo> listaNivel5 = CrearArbol.getListaNivel25();
+
+//        System.out.println(listaNivel5.size());
+
+//        System.out.println("Búsqueda en amplitud: ");
+//        for (Nodo nodo : listaNivel5) {
+//            System.out.println(Busqueda.busquedaAmplitud(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
+//        }
+//
+//        System.out.println("\nBúsqueda en profundidad: ");
+//        for (Nodo nodo : listaNivel5) {
+//            System.out.println(Busqueda.busquedaProfundidad(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
+//        }
+//
+//        System.out.println("\nBúsqueda en primero el mejor - Fichas Desacomodadas: ");
+//        for (Nodo nodo : listaNivel5) {
+//            System.out.println(Busqueda.busquedaPMFichas(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
+//        }
+//
+//        System.out.println("\nBúsqueda en primero el mejor - Manhattan: ");
+//        for (Nodo nodo : listaNivel5) {
+//            System.out.println(Busqueda.busquedaPMManhattan(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
+//        }
+//
+//        System.out.println("\nBúsqueda en A* - Fichas Desacomodadas: ");
+//        for (Nodo nodo : listaNivel5) {
+//            System.out.println(Busqueda.busquedaAFichas(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
+//        }
+//
+//        System.out.println("\nBúsqueda en A* - Manhattan: ");
+//        for (Nodo nodo : listaNivel5) {
+//            System.out.println(Busqueda.busquedaAManhattan(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
+//        }
+
 
     }
 
