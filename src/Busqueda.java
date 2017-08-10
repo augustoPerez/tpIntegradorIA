@@ -8,11 +8,13 @@ class Busqueda {
         ArrayList<Nodo> lista = new ArrayList<>();
         lista.add(arbol.getRaiz());
         int cantNodosRecorridos = 0;
+        long t1 = System.currentTimeMillis();
         while (!lista.isEmpty()) {
             Nodo nodoRecorrido = lista.remove(0);
             cantNodosRecorridos++;
             if (Arrays.equals(nodoRecorrido.getPuzzle(), meta)) {
-                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido);
+                long t2 = System.currentTimeMillis();
+                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido, t2 - t1);
                 break;
             } else {
                 if (nodoRecorrido.getArriba() != null) lista.add(nodoRecorrido.getArriba());
@@ -29,11 +31,13 @@ class Busqueda {
         ArrayList<Nodo> lista = new ArrayList<>();
         lista.add(arbol.getRaiz());
         int cantNodosRecorridos = 0;
+        long t1 = System.currentTimeMillis();
         while (!lista.isEmpty()) {
             Nodo nodoRecorrido = lista.remove(0);
             cantNodosRecorridos++;
             if (Arrays.equals(nodoRecorrido.getPuzzle(), meta)) {
-                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido);
+                long t2 = System.currentTimeMillis();
+                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido, t2 - t1);
                 break;
             } else {
                 if (nodoRecorrido.getIzquierda() != null) lista.add(0, nodoRecorrido.getIzquierda());
@@ -51,6 +55,7 @@ class Busqueda {
         lista.add(arbol.getRaiz());
         int cantNodosRecorridos = 0;
         int[] posiciones = new int[10];
+        long t1 = System.currentTimeMillis();
         while (!lista.isEmpty()) {
             Nodo nodoRecorrido = lista.remove(0);
             for (int i = 1; i < posiciones.length; i++) {
@@ -58,7 +63,8 @@ class Busqueda {
             }
             cantNodosRecorridos++;
             if (Arrays.equals(nodoRecorrido.getPuzzle(), meta)) {
-                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido);
+                long t2 = System.currentTimeMillis();
+                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido, t2 - t1);
                 break;
             } else {
                 if (nodoRecorrido.getIzquierda() != null) {
@@ -92,6 +98,7 @@ class Busqueda {
         lista.add(arbol.getRaiz());
         int cantNodosRecorridos = 0;
         int[] posiciones = new int[31];
+        long t1 = System.currentTimeMillis();
         while (!lista.isEmpty()) {
             Nodo nodoRecorrido = lista.remove(0);
             for (int i = 1; i < posiciones.length; i++) {
@@ -99,7 +106,8 @@ class Busqueda {
             }
             cantNodosRecorridos++;
             if (Arrays.equals(nodoRecorrido.getPuzzle(), meta)) {
-                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido);
+                long t2 = System.currentTimeMillis();
+                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido, t2 - t1);
                 break;
             } else {
                 if (nodoRecorrido.getIzquierda() != null) {
@@ -133,6 +141,7 @@ class Busqueda {
         lista.add(arbol.getRaiz());
         int cantNodosRecorridos = 0;
         int[] posiciones = new int[arbol.getMaxNivel() + 10];
+        long t1 = System.currentTimeMillis();
         while (!lista.isEmpty()) {
             Nodo nodoRecorrido = lista.remove(0);
             for (int i = 1; i < posiciones.length; i++) {
@@ -140,7 +149,8 @@ class Busqueda {
             }
             cantNodosRecorridos++;
             if (Arrays.equals(nodoRecorrido.getPuzzle(), meta)) {
-                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido);
+                long t2 = System.currentTimeMillis();
+                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido, t2 - t1);
                 break;
             } else {
                 if (nodoRecorrido.getIzquierda() != null) {
@@ -174,6 +184,7 @@ class Busqueda {
         lista.add(arbol.getRaiz());
         int cantNodosRecorridos = 0;
         int[] posiciones = new int[arbol.getMaxNivel() + 31];
+        long t1 = System.currentTimeMillis();
         while (!lista.isEmpty()) {
             Nodo nodoRecorrido = lista.remove(0);
             for (int i = 1; i < posiciones.length; i++) {
@@ -181,7 +192,8 @@ class Busqueda {
             }
             cantNodosRecorridos++;
             if (Arrays.equals(nodoRecorrido.getPuzzle(), meta)) {
-                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido);
+                long t2 = System.currentTimeMillis();
+                nodoEncontrado = new NodoEncontrado(cantNodosRecorridos, nodoRecorrido, t2 - t1);
                 break;
             } else {
                 if (nodoRecorrido.getIzquierda() != null) {

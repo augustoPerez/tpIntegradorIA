@@ -5,10 +5,12 @@ class NodoEncontrado {
 
     private int cantNodosRecorridos;
     private Nodo nodoMeta;
+    private long tiempoEmpleado;
 
-    NodoEncontrado(int cantNodosRecorridos, Nodo nodoMeta) {
+    NodoEncontrado(int cantNodosRecorridos, Nodo nodoMeta, long tiempoEmpleado) {
         this.cantNodosRecorridos = cantNodosRecorridos;
         this.nodoMeta = nodoMeta;
+        this.tiempoEmpleado = tiempoEmpleado;
     }
 
     int getCantNodosRecorridos() {
@@ -19,19 +21,16 @@ class NodoEncontrado {
         return nodoMeta;
     }
 
-    @Override
-    public String toString() {
-        return "Nivel del nodo encontrado: " + nodoMeta.getNivel() + "\tCantidad de nodos recorridos: " + cantNodosRecorridos;
+    public long getTiempoEmpleado() {
+        return tiempoEmpleado;
     }
 
-    String caminoPuzzle() {
-        String string = "";
-        Nodo nodo = this.nodoMeta;
-        while (nodo.getNodoPadre() != null) {
-            string += Arrays.toString(nodo.getPuzzle()) + "\n";
-            nodo = nodo.getNodoPadre();
-        }
-        return string;
+
+    @Override
+    public String toString() {
+        return "Nivel del nodo encontrado: " + nodoMeta.getNivel() +
+                "\tCantidad de nodos recorridos: " + cantNodosRecorridos +
+                "\tTiempo empleado: " + tiempoEmpleado;
     }
 
     String caminoPuzzle2() {

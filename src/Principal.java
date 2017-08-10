@@ -10,14 +10,14 @@ public class Principal {
         int[] tableroInicial = {1, 2, 3, 4, 0, 5, 6, 7, 8}; //tablero inicial
 
 //        Arbol arbol = CrearArbol.maxNivel(tableroInicial, 30, 3);
-//        Arbol arbol = CrearArbol.enAmplitud(tableroInicial);
+        Arbol arbol = CrearArbol.enAmplitud(tableroInicial);
 //        Arbol arbol = CrearArbol.enProfundidad(tableroInicial);
 
 //        int[] asd = {1, 5, 7, 6, 0, 4, 8, 3, 2};  Una disposición de tablero no encontrada
         int[] asd = {1, 5, 7, 6, 0, 4, 8, 2, 3};
 //        int[] asd = {1, 3, 5, 4, 7, 2, 6, 0, 8};
 
-        Scanner scanner = new Scanner(System.in);
+      /*  Scanner scanner = new Scanner(System.in);
 
         int[] tableroIni = new int[9];
         int[] tableroFin = new int[9];
@@ -85,41 +85,292 @@ public class Principal {
         System.out.println("\n-----Busqueda en A* - Manhattan: \n" + (Busqueda.busquedaAManhattan(arbol, tableroFin) != null ? Busqueda.busquedaAManhattan(arbol, tableroFin).toString() : "Tablero no encontrado"));
 
         System.out.println("\n" + (Busqueda.busquedaAmplitud(arbol, tableroFin) != null ? Busqueda.busquedaAmplitud(arbol, tableroFin).caminoPuzzle2() : "Tablero no encontrado"));
+*/
+        for (int i = 0; i < 5; i++) {
 
-//        ArrayList<Nodo> listaNivel5 = CrearArbol.getListaNivel25();
 
-//        System.out.println(listaNivel5.size());
+            ArrayList<Nodo> listaNivel5 = CrearArbol.getListaNivel5();
+            System.out.println("Nivel 5");
+            System.out.println("Nodos: " + listaNivel5.size());
+            long tiempoTotal = 0L;
 
-//        System.out.println("Búsqueda en amplitud: ");
-//        for (Nodo nodo : listaNivel5) {
-//            System.out.println(Busqueda.busquedaAmplitud(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
-//        }
-//
-//        System.out.println("\nBúsqueda en profundidad: ");
-//        for (Nodo nodo : listaNivel5) {
-//            System.out.println(Busqueda.busquedaProfundidad(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
-//        }
-//
-//        System.out.println("\nBúsqueda en primero el mejor - Fichas Desacomodadas: ");
-//        for (Nodo nodo : listaNivel5) {
-//            System.out.println(Busqueda.busquedaPMFichas(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
-//        }
-//
-//        System.out.println("\nBúsqueda en primero el mejor - Manhattan: ");
-//        for (Nodo nodo : listaNivel5) {
-//            System.out.println(Busqueda.busquedaPMManhattan(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
-//        }
-//
-//        System.out.println("\nBúsqueda en A* - Fichas Desacomodadas: ");
-//        for (Nodo nodo : listaNivel5) {
-//            System.out.println(Busqueda.busquedaAFichas(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
-//        }
-//
-//        System.out.println("\nBúsqueda en A* - Manhattan: ");
-//        for (Nodo nodo : listaNivel5) {
-//            System.out.println(Busqueda.busquedaAManhattan(arbol, nodo.getPuzzle()).getCantNodosRecorridos() + " ");
-//        }
+            System.out.print("Búsqueda en amplitud: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAmplitud(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
 
+            System.out.print("Búsqueda en profundidad: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaProfundidad(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+
+
+            listaNivel5 = CrearArbol.getListaNivel10();
+            System.out.println("Nivel 10");
+            System.out.println("Nodos: " + listaNivel5.size());
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en amplitud: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAmplitud(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en profundidad: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaProfundidad(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+
+
+            listaNivel5 = CrearArbol.getListaNivel15();
+            System.out.println("Nivel 15");
+            System.out.println("Nodos: " + listaNivel5.size());
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en amplitud: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAmplitud(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en profundidad: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaProfundidad(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+
+
+            listaNivel5 = CrearArbol.getListaNivel20();
+            System.out.println("Nivel 20");
+            System.out.println("Nodos: " + listaNivel5.size());
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en amplitud: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAmplitud(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en profundidad: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaProfundidad(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+
+
+            listaNivel5 = CrearArbol.getListaNivel25();
+            System.out.println("Nivel 25");
+            System.out.println("Nodos: " + listaNivel5.size());
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en amplitud: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAmplitud(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en profundidad: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaProfundidad(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+
+
+            listaNivel5 = CrearArbol.getListaNivel30();
+            System.out.println("Nivel 30");
+            System.out.println("Nodos: " + listaNivel5.size());
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en amplitud: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAmplitud(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en profundidad: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaProfundidad(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en primero el mejor - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaPMManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Fichas Desacomodadas: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAFichas(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+            tiempoTotal = 0L;
+
+            System.out.print("Búsqueda en A* - Manhattan: ");
+            for (Nodo nodo : listaNivel5) {
+                tiempoTotal += Busqueda.busquedaAManhattan(arbol, nodo.getPuzzle()).getTiempoEmpleado();
+            }
+            System.out.println(tiempoTotal);
+
+        }
 
     }
 
