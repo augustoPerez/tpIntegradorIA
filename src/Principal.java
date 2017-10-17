@@ -10,14 +10,14 @@ public class Principal {
         int[] tableroInicial = {1, 2, 3, 4, 0, 5, 6, 7, 8}; //tablero inicial
 
 //        Arbol arbol = CrearArbol.maxNivel(tableroInicial, 30, 3);
-        Arbol arbol = CrearArbol.enAmplitud(tableroInicial);
+//        Arbol arbol = CrearArbol.enAmplitud(tableroInicial);
 //        Arbol arbol = CrearArbol.enProfundidad(tableroInicial);
 
 //        int[] asd = {1, 5, 7, 6, 0, 4, 8, 3, 2};  Una disposición de tablero no encontrada
         int[] asd = {1, 5, 7, 6, 0, 4, 8, 2, 3};
 //        int[] asd = {1, 3, 5, 4, 7, 2, 6, 0, 8};
 
-      /*  Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         int[] tableroIni = new int[9];
         int[] tableroFin = new int[9];
@@ -85,8 +85,8 @@ public class Principal {
         System.out.println("\n-----Busqueda en A* - Manhattan: \n" + (Busqueda.busquedaAManhattan(arbol, tableroFin) != null ? Busqueda.busquedaAManhattan(arbol, tableroFin).toString() : "Tablero no encontrado"));
 
         System.out.println("\n" + (Busqueda.busquedaAmplitud(arbol, tableroFin) != null ? Busqueda.busquedaAmplitud(arbol, tableroFin).caminoPuzzle2() : "Tablero no encontrado"));
-*/
-        for (int i = 0; i < 5; i++) {
+
+       /* for (int i = 0; i < 5; i++) {
 
 
             ArrayList<Nodo> listaNivel5 = CrearArbol.getListaNivel5();
@@ -370,7 +370,7 @@ public class Principal {
             }
             System.out.println(tiempoTotal);
 
-        }
+        }*/
 
     }
 
