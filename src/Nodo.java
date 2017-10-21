@@ -72,7 +72,7 @@ class Nodo {
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(getPuzzle());
+        return Hash.hashCode(getPuzzle());
     }
 
 }
