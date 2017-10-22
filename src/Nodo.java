@@ -1,6 +1,3 @@
-import java.io.Serializable;
-import java.util.Arrays;
-
 class Nodo {
 
     private int[] puzzle;
